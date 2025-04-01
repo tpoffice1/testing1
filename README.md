@@ -15,9 +15,9 @@ I need additional eyes on what is broken within the `sendMMS` method through **C
 
 **Co-Pilot has suggested the following changes to improve the debugging process:**  
 
-1. **Check for permissions**: Ensure the app has the necessary permissions to send SMS/MMS.  
-2. **Convert `Bitmap` to `Uri`**: Convert the Bitmap images to Uri objects.  
-3. **Create and send the MMS**: Use an Intent to send the MMS with the images attached.  
+1. **Check for permissions**: Ensure the app has the necessary permissions to send SMS/MMS  
+2. **Convert `Bitmap` to `Uri`**: Convert the Bitmap images to Uri objects
+3. **Create and send the MMS**: Use an Intent to send the MMS with the images attached 
 
 ### Updated `sendMMS` Method:  
 
@@ -55,9 +55,9 @@ private Uri getImageUri(Context context, Bitmap bitmap) {
     return path != null ? Uri.parse(path) : null;
 }
 '''
-Explanation:
-Permission Check: Ensure the SEND_SMS permission is granted.
+**Explanation:**
+1. **Permission Check**: Ensure the SEND_SMS permission is granted
 
-Convert Bitmaps to Uri: Use the getImageUri method to convert Bitmap images to Uri objects.
+2. **Convert Bitmaps to Uri**: Use the getImageUri method to convert Bitmap images to Uri objects
 
-Create and Send the MMS: Use an Intent with ACTION_SEND_MULTIPLE to send the MMS with the images attached.
+3. **Create and Send the MMS**: Use an Intent with ACTION_SEND_MULTIPLE to send the MMS with the images attached
