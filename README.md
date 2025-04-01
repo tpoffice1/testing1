@@ -55,7 +55,7 @@ private Uri getImageUri(Context context, Bitmap bitmap) {
     return path != null ? Uri.parse(path) : null;
 }
 
-'''
+```
 **Explanation:**
 1. **Permission Check**: Ensure the SEND_SMS permission is granted
 
