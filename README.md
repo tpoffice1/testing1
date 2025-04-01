@@ -1,21 +1,28 @@
-The SendMMS method initiated from within the SendMessageActivity.java that has been copied to this public repository at https://github.com/tpoffice1/testing1 is here for the purpose of introduction. It isn't working correctly according to the prior developer who said that only Google can fix it. 
+The `SendMMS` method initiated from within the `SendMessageActivity.java` that has been copied to this public repository at  
+[https://github.com/tpoffice1/testing1](https://github.com/tpoffice1/testing1) is here for the purpose of introduction.  
 
-He said that the workaround is to find or write another API which seems dangerous to me from a personal security standpoint. 
+It isn't working correctly according to the prior developer, who said that only Google can fix it.  
 
-I don't want there to be anything in the code that interacts directly with my account until it is running on my phone only and I give I select the Google account for it to work with. 
+He mentioned that the workaround is to find or write another API, which seems dangerous to me from a personal security standpoint.  
 
-I don't yet fully understand what is happening on the side of the developer and he has some logistical problems that won't allow him be in front of a computer and online when needed. 
+I don't want there to be anything in the code that interacts directly with my account until it is running on my phone only, and I explicitly select the Google account for it to work with.  
 
-I need some additional eyes on what is broken within the SendMMS method through CodeTogether which will allow you to emulate, test, edit, and compile directly from within my IDE.
+I don't yet fully understand what is happening on the developer's side, and he has some logistical problems that prevent him from being in front of a computer and online when needed.  
 
-Co-Pilot has suggested the following changes to improve the debugging process.
+I need additional eyes on what is broken within the `sendMMS` method through **CodeTogether**, which will allow you to emulate, test, edit, and compile directly from within my IDE.  
 
-To modify the sendMMS method to ensure it works correctly, you can follow these steps:  
-Check for permissions: Ensure the app has the necessary permissions to send SMS.
-Convert Bitmaps to Uri: Convert the Bitmap images to Uri objects.
-Create and send the MMS: Use an Intent to send the MMS with the images attached.
-Here is the updated sendMMS method:
-'''private void sendMMS(ArrayList<Bitmap> images) {
+### Debugging and Fixing the `sendMMS` Method  
+
+**Co-Pilot has suggested the following changes to improve the debugging process:**  
+
+1. **Check for permissions**: Ensure the app has the necessary permissions to send SMS/MMS.  
+2. **Convert `Bitmap` to `Uri`**: Convert the Bitmap images to Uri objects.  
+3. **Create and send the MMS**: Use an Intent to send the MMS with the images attached.  
+
+### Updated `sendMMS` Method:  
+
+```java
+private void sendMMS(ArrayList<Bitmap> images) {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
         requestPermissionLauncher.launch(Manifest.permission.SEND_SMS);
         return;
@@ -46,7 +53,4 @@ Here is the updated sendMMS method:
 private Uri getImageUri(Context context, Bitmap bitmap) {
     String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Image", null);
     return path != null ? Uri.parse(path) : null;
-}'''
-Permission check: Ensure the SEND_SMS permission is granted.
-Convert Bitmaps to Uri: Use the getImageUri method to convert Bitmap images to Uri objects.
-Create and send the MMS: Use an Intent with ACTION_SEND_MULTIPLE to send the MMS with the images attached.
+}
