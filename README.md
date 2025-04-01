@@ -15,7 +15,7 @@ Check for permissions: Ensure the app has the necessary permissions to send SMS.
 Convert Bitmaps to Uri: Convert the Bitmap images to Uri objects.
 Create and send the MMS: Use an Intent to send the MMS with the images attached.
 Here is the updated sendMMS method:
-private void sendMMS(ArrayList<Bitmap> images) {
+'''private void sendMMS(ArrayList<Bitmap> images) {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
         requestPermissionLauncher.launch(Manifest.permission.SEND_SMS);
         return;
@@ -46,7 +46,7 @@ private void sendMMS(ArrayList<Bitmap> images) {
 private Uri getImageUri(Context context, Bitmap bitmap) {
     String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Image", null);
     return path != null ? Uri.parse(path) : null;
-}
+}'''
 Permission check: Ensure the SEND_SMS permission is granted.
 Convert Bitmaps to Uri: Use the getImageUri method to convert Bitmap images to Uri objects.
 Create and send the MMS: Use an Intent with ACTION_SEND_MULTIPLE to send the MMS with the images attached.
