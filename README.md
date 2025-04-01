@@ -1,7 +1,6 @@
 <details>
   <summary><strong>Description of Issue</strong> (Click to expand)</summary>
 
-
 The `SendMMS` method initiated from within the `SendMessageActivity.java` that has been copied to this public repository at  
 [https://github.com/tpoffice1/testing1](https://github.com/tpoffice1/testing1) is here for the purpose of introduction.  
 
@@ -14,6 +13,8 @@ I don't want there to be anything in the code that interacts directly with my ac
 I don't yet fully understand what is happening on the developer's side, and he has some logistical problems that prevent him from being in front of a computer and online when needed.  
 
 I need additional eyes on what is broken within the `sendMMS` method through **CodeTogether**, which will allow you to emulate, test, edit, and compile directly from within my IDE.  
+
+</details>
 
 <details>
   <summary><strong>Screenshots</strong> (Click to expand)</summary>
@@ -41,8 +42,8 @@ I need additional eyes on what is broken within the `sendMMS` method through **C
 **Co-Pilot has suggested the following changes to improve the debugging process:**  
 
 1. **Check for permissions**: Ensure the app has the necessary permissions to send SMS/MMS  
-2. **Convert `Bitmap` to `Uri`**: Convert the Bitmap images to Uri objects
-3. **Create and send the MMS**: Use an Intent to send the MMS with the images attached 
+2. **Convert `Bitmap` to `Uri`**: Convert the Bitmap images to Uri objects  
+3. **Create and send the MMS**: Use an Intent to send the MMS with the images attached  
 
 ### Updated `sendMMS` Method:  
 
@@ -79,11 +80,3 @@ private Uri getImageUri(Context context, Bitmap bitmap) {
     String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Image", null);
     return path != null ? Uri.parse(path) : null;
 }
-
-```
-**Explanation:**
-1. **Permission Check**: Ensure the SEND_SMS permission is granted
-
-2. **Convert Bitmaps to Uri**: Use the getImageUri method to convert Bitmap images to Uri objects
-
-3. **Create and Send the MMS**: Use an Intent with ACTION_SEND_MULTIPLE to send the MMS with the images attached
