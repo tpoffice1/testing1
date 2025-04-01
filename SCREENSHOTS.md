@@ -1,7 +1,7 @@
- **Screen1:** This screen allows the user to bring up a list of approved data sources  
+ **Screen1:** This screen allows the user to bring up a list of data sources by clicking on the purple button for the approved data processing action
 ![Screen 1](https://github.com/user-attachments/assets/752c8659-e666-4274-84e8-37a2bc432031)  
 
-**Screen 2:** This screen allows the user to select a data source from the pre-approved list of sources
+**Screen 2:** This screen allows the user to select which data is to be processed from the selected list
 | ![Screen 2](https://github.com/user-attachments/assets/ff5b5c5a-da9d-4739-97e5-5e2772eebd02) |
 |---|
 
