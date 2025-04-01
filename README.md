@@ -1,4 +1,20 @@
 <details>
+  <summary><strong>Issue</strong> (Click to expand)</summary>
+
+The `SendMMS` method initiated from within the `SendMessageActivity.java` that has been copied to this public repository at  
+[https://github.com/tpoffice1/testing1](https://github.com/tpoffice1/testing1) is here for the purpose of introduction.  
+
+It isn't working correctly according to the prior developer, who said that only Google can fix it.  
+
+He mentioned that the workaround is to find or write another API, which seems dangerous to me from a personal security standpoint.  
+
+I don't want there to be anything in the code that interacts directly with my account until it is running on my phone only, and I explicitly select the Google account for it to work with.  
+
+I don't yet fully understand what is happening on the developer's side, and he has some logistical problems that prevent him from being in front of a computer and online when needed.  
+
+I need additional eyes on what is broken within the `sendMMS` method through **CodeTogether**, which will allow you to emulate, test, edit, and compile directly from within my IDE.  
+
+<details>
   <summary><strong>Screenshots</strong> (Click to expand)</summary>
 
   **Screen 1:** This screen allows the user to bring up a list of data sources by clicking on the purple button for the approved data processing action.  
@@ -18,19 +34,6 @@
   |---|
 
 </details>
-
-The `SendMMS` method initiated from within the `SendMessageActivity.java` that has been copied to this public repository at  
-[https://github.com/tpoffice1/testing1](https://github.com/tpoffice1/testing1) is here for the purpose of introduction.  
-
-It isn't working correctly according to the prior developer, who said that only Google can fix it.  
-
-He mentioned that the workaround is to find or write another API, which seems dangerous to me from a personal security standpoint.  
-
-I don't want there to be anything in the code that interacts directly with my account until it is running on my phone only, and I explicitly select the Google account for it to work with.  
-
-I don't yet fully understand what is happening on the developer's side, and he has some logistical problems that prevent him from being in front of a computer and online when needed.  
-
-I need additional eyes on what is broken within the `sendMMS` method through **CodeTogether**, which will allow you to emulate, test, edit, and compile directly from within my IDE.  
 
 ### Debugging and Fixing the `sendMMS` Method  
 
