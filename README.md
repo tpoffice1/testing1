@@ -3,17 +3,23 @@
   <summary><strong>Issue Description</strong> (Click to expand)</summary>
 
 The `SendMMS` method initiated from within the `SendMessageActivity.java` that has been copied to this public repository at  
-[https://github.com/tpoffice1/testing1](https://github.com/tpoffice1/testing1) is here for the purpose of introduction.  
+[https://github.com/tpoffice1/testing1](https://github.com/tpoffice1/testing1)
 
-It isn't working correctly according to the prior developer, who said that only Google can fix it.  
+It isn't working correctly and we need to figure out the best way to test it together.
+
+According to the prior developer who apparently doesn't want to answer questions now said "only Google can fix it"
+
+I don't yet fully understand what is happening on the developer's side, and he has some logistical problems that prevent him from being in front of a computer and online when needed.
+
+He doesn't respond now when I send him messages and I think he is just stuck.
 
 He mentioned that the workaround is to find or write another API, which seems dangerous to me from a personal security standpoint.  
 
 I don't want there to be anything in the code that interacts directly with my account until it is running on my phone only, and I explicitly select the Google account for it to work with.  
 
-I don't yet fully understand what is happening on the developer's side, and he has some logistical problems that prevent him from being in front of a computer and online when needed.  
+I need additional eyes on what is broken within the `sendMMS` method perhaps using the recommended troubleshooting method that Co-Pilot mentions as depicted in the shared public version of the repository code in question.
 
-I need additional eyes on what is broken within the `sendMMS` method through **CodeTogether**, which will allow you to emulate, test, edit, and compile directly from within my IDE.  
+If you are ok with the online payment terms of $3 per successful session and would like to see how it goes, then send me a link with audio and screensharing and let's try to solve this one
 
 </details>
 
