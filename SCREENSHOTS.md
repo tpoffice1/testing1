@@ -5,7 +5,7 @@
 | ![Screen 2](https://github.com/user-attachments/assets/ff5b5c5a-da9d-4739-97e5-5e2772eebd02) |
 |---|
 
-**Screen 3:** Temporarily missing but requested from the developer
+**Screen 3:** The code that produces this screen has been temporarily commented out for the purpose of testing the SendMMS method
 
 **Screen 4:** This screen allows the user to select from up-to twelve images from within each of the seven groups of cars showing  
 ![Screen 4](https://github.com/user-attachments/assets/7998fadc-6858-468c-884c-f73c7e0d7ada)
