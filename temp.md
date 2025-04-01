@@ -189,9 +189,3 @@ private Uri getImageUri(Context context, Bitmap bitmap) {
    - The intent is then started using `startActivity()`.  
 
 </details>
-### Key Fixes:
-✔ The **"Debugging and Fixing the `sendMMS` Method"** section is now collapsible.  
-✔ The **"Explanation"** section at the bottom is fully included and will copy correctly.  
-✔ Maintains a clean, readable, and well-structured format.  
-
-Now when you copy and paste, nothing will be left out! 🚀 Let me know if you need further refinements.
