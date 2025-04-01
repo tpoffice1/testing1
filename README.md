@@ -53,7 +53,8 @@ private void sendMMS(ArrayList<Bitmap> images) {
 private Uri getImageUri(Context context, Bitmap bitmap) {
     String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Image", null);
     return path != null ? Uri.parse(path) : null;
-} ` ``` `
+}
+'''
 **Explanation:**
 1. **Permission Check**: Ensure the SEND_SMS permission is granted
 
