@@ -1,6 +1,6 @@
 <details>
   <summary><strong>Application Summary</strong> (Click to expand)</summary>
-  ###The objective of the application is to obtain the ability to select and send today's updated pictures and details of top choice cars via MMS to potential customers on any given day###
+  The objective of the application is to obtain the ability to select and send today's updated pictures and details of top choice cars via MMS to potential customers on any given day
   
   **GitHub Copilot Application Summary:**
 The Value Cars application is an Android app designed to manage car data and contacts. It includes the following features:
