@@ -1,4 +1,3 @@
-
 <details>
   <summary><strong>Issue Description</strong> (Click to expand)</summary>
 
