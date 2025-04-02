@@ -24,6 +24,13 @@ If you are ok with the online payment terms of $3 per successful session and wou
 </details>
 
 <details>
+  <summary><strong>Availability</strong> (Click to expand)</summary>
+
+It usually doesn't take me more than 30 minutes to get back home for screensharing at virtually anytime during my daylight hours and my current time is always accurately reflected here https://time.is/CT
+
+</details>
+
+<details>
   <summary><strong>Screenshots</strong> (Click to expand)</summary>
 
   **Screen 1:** This screen allows the user to bring up a list of data sources by clicking on the purple button for the approved data processing action.  
