@@ -4,12 +4,13 @@
 
 **GitHub Copilot Application Summary**
 The Value Cars application is an Android app designed to manage car data and contacts. It includes the following features:
-**CSV File Processing**: Allows users to select and process a CSV file containing car data.
-**Displaying Car Data**: Displays the processed car data in a RecyclerView.
-**Contact Management**: Fetches and displays contact groups and their contacts from the user's device.
-**Sending MMS**: Enables users to send images as MMS messages.
-**Permissions Handling**: Manages permissions for reading contacts and sending SMS/MMS.
-**Broadcast Receivers**: Handles updates on CSV processing progress and displays errors if any occur.
+1. **CSV File Processing**: Allows users to select and process a CSV file containing car data.
+2. **Displaying Car Data**: Displays the processed car data in a RecyclerView.
+3. **Contact Management**: Fetches and displays contact groups and their contacts from the user's device.
+4. **Sending MMS**: Enables users to send images as MMS messages.
+5. **Permissions Handling**: Manages permissions for reading contacts and sending SMS/MMS.
+6. **Broadcast Receivers**: Handles updates on CSV processing progress and displays errors if any occur.
+
 </details>
 <details>
   <summary><strong>Issue Description</strong> (Click to expand)</summary>
