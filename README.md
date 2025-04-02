@@ -13,7 +13,13 @@
   2. **Displaying Car Data**: Displays the processed car data in a RecyclerView.  
   3. **Contact Management**: Fetches and displays contact groups and their contacts from the user's device.  
   4. **Permissions Handling**: Manages permissions for reading contacts and sending SMS/MMS.  
-  5. **Broadcast Receivers**: Handles updates on CSV processing progress and displays errors if any occur.  
+  5. **Broadcast Receivers**: Handles updates on CSV processing progress and displays errors if any occur.
+
+References:
+1. `activity_send_message.xml`
+2. `activity_main.xml`
+3. `SendMessageActivity.java`
+4. `MainActivity.java`
 
 </details>
 
