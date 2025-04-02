@@ -1,8 +1,8 @@
 <details>
   <summary><strong>Application Summary</strong> (Click to expand)</summary>
-  The objective of the application is to obtain the ability to select and send today's updated pictures and details of top choice cars via MMS to potential customers on any given day
+  The owner's objective of the application is to obtain the ability to select and send today's updated pictures and details of top choice cars via MMS to potential customers on any given day
   
-  **GitHub Copilot Application Summary:**
+  **GitHub Copilot Application Summary:** This is what Copilot sees currently
 The Value Cars application is an Android app designed to manage car data and contacts. It includes the following features:
 1. **CSV File Processing**: Allows users to select and process a CSV file containing car data.
 2. **Displaying Car Data**: Displays the processed car data in a RecyclerView.
