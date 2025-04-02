@@ -1,5 +1,5 @@
 <details>
-  <summary><strong>Application Summary</strong> (Click to expand)</summary>
+  <summary><strong>Application Objective</strong> (Click to expand)</summary>
 
   <br>
 
