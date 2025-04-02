@@ -24,7 +24,7 @@
 </details>
 
 <details>
-  <summary><strong>Issue Description</strong> (Click to expand)</summary>
+  <summary><strong>Current Issue Description</strong> (Click to expand)</summary>
 
 The `SendMMS` method initiated from within the `SendMessageActivity.java` that has been copied to this public repository at  
 [https://github.com/tpoffice1/testing1](https://github.com/tpoffice1/testing1)
