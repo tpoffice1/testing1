@@ -1,4 +1,7 @@
 <details>
+  <summary><strong>Application Summary</strong> (Click to expand)</summary>
+</details>
+<details>
   <summary><strong>Issue Description</strong> (Click to expand)</summary>
 
 The `SendMMS` method initiated from within the `SendMessageActivity.java` that has been copied to this public repository at  
