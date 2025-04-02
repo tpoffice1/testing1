@@ -1,6 +1,8 @@
 <details>
   <summary><strong>Application Summary</strong> (Click to expand)</summary>
 
+  <br>
+
   The owner's objective of the application is to obtain the ability to select and send today's updated pictures and details of top choice cars via MMS to potential customers on any given day.
   
   **GitHub Copilot Application Summary:** This is what Copilot sees currently.
