@@ -15,7 +15,7 @@
   4. **Permissions Handling**: Manages permissions for reading contacts and sending SMS/MMS.  
   5. **Broadcast Receivers**: Handles updates on CSV processing progress and displays errors if any occur.
 
-References:
+**References**:
 1. `activity_send_message.xml`
 2. `activity_main.xml`
 3. `SendMessageActivity.java`
