@@ -1,6 +1,5 @@
 <details>
   <summary><strong>Application Summary</strong> (Click to expand)</summary>
-  **Application Objective:**
   The objective of the application is to obtain the ability to select and send today's updated pictures and details of top choice cars via MMS to potential customers on any given day
 </details>
 <details>
