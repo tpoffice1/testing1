@@ -78,45 +78,116 @@ My day usually starts at 7:30 a.m. Central Time https://time.is/CT.  It usually 
 <details>
   <summary><strong>Resolve the bug in our `sendMMS` Method</strong> (Click to expand)</summary>
 
-# Troubleshooting the `sendMMS` Method
+We developed the code to get the current default messaging. We now have the ability to select which SMS application to use, but sending MMS is still not working. The problem that if the google messaging app is selected, then it still returns null
 
-To troubleshoot the `sendMMS` method, ensure that the method is correctly implemented and that all necessary permissions are granted.  
+To address the issue of sending MMS when the Google Messaging app is selected, ensure that the `sendMMS` method is correctly implemented and that the `Transaction` class is properly configured. Here is a step-by-step approach:
 
-## 1. Ensure Necessary Permissions  
-Add the following permissions to your `AndroidManifest.xml`:  
+1. **Check Default SMS App**: Ensure that your app is set as the default SMS app before sending MMS.
+2. **Handle Null Return**: Add checks to handle cases where the Google Messaging app might return null.
 
-```xml
-<uses-permission android:name="android.permission.SEND_SMS" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-```
-
-## 2. Implement the `sendMMS` Method  
-Below is an example implementation of the `sendMMS` method:  
+### Updated `sendMMS` Method
 
 ```java
-public void sendMMS(Context context, String phoneNumber, String message, Uri imageUri) {
-    Intent sendIntent = new Intent(Intent.ACTION_SEND);
-    sendIntent.setType("image/jpeg");
-    sendIntent.putExtra("address", phoneNumber);
-    sendIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-    sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+private void sendMMS(ArrayList<Bitmap> images) {
+    if (!Telephony.Sms.getDefaultSmsPackage(this).equals(getPackageName())) {
+        Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
+        intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, getPackageName());
+        default_launcher.launch(intent);
+        return; // Exit the method to wait for the user to set the default SMS app
+    }
 
-    try {
-        context.startActivity(sendIntent);
-    } catch (Exception e) {
-        e.printStackTrace();
-        Toast.makeText(context, "Failed to send MMS", Toast.LENGTH_SHORT).show();
+    ArrayList<Uri> imageUris = new ArrayList<>();
+    for (Bitmap bitmap : images) {
+        Uri imageUri = getUri(this, bitmap, "test");
+        if (imageUri != null) {
+            imageUris.add(imageUri);
+        } else {
+            Log.e("sendMMS", "Failed to get URI for image");
+        }
+    }
+
+    if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+        Log.d("Permission -- MMS-- granted", "Granted");
+
+        mThreadManager.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("ThreadPool/MMSManager", "Trying to send MMS.");
+                com.klinker.android.send_message.Settings sendSettings = new com.klinker.android.send_message.Settings();
+                sendSettings.setMmsc(mSettings.getMmsc());
+                sendSettings.setProxy(mSettings.getProxy());
+                sendSettings.setPort(mSettings.getPort());
+                sendSettings.setUseSystemSending(true);
+
+                Transaction transaction = new Transaction(getApplicationContext(), sendSettings);
+
+                Message message = new Message("Check out this image!", phonenumber);
+                message.setSave(false);
+
+                for (Uri uri : imageUris) {
+                    message.addImage(uri);
+                }
+
+                transaction.sendNewMessage(message, Transaction.NO_THREAD_ID);
+                Log.d("Permission[1] -- MMS-- granted", "Granted");
+            }
+        });
+    } else {
+        requestPermissionLauncher.launch(Manifest.permission.SEND_SMS);
     }
 }
 ```
 
-## 3. Call the `sendMMS` Method  
-Use the following code to call the `sendMMS` method:  
+### `getUri` Method
+
+Ensure the `getUri` method correctly saves the bitmap and returns the `Uri`.
 
 ```java
-Uri imageUri = Uri.parse("file://" + imagePath); // Replace imagePath with the actual path to the image
-sendMMS(this, "1234567890", "Check out this image!", imageUri);
+public Uri getUri(Context context, Bitmap bitmap, String displayName) {
+    File directory = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MMS");
+    if (!directory.exists()) {
+        directory.mkdirs();
+    }
+
+    File file = new File(directory, displayName + ".png");
+    try (FileOutputStream out = new FileOutputStream(file)) {
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+    } catch (IOException e) {
+        e.printStackTrace();
+        return null; // Return null if there is an error
+    }
+
+    return FileProvider.getUriForFile(context, context.getPackageName() + ".provider", file);
+}
 ```
+
+### `FileProvider` Configuration in `AndroidManifest.xml`
+
+Ensure the `FileProvider` is correctly configured.
+
+```xml
+<provider
+    android:name="androidx.core.content.FileProvider"
+    android:authorities="${applicationId}.provider"
+    android:exported="false"
+    android:grantUriPermissions="true">
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/file_paths" />
+</provider>
+```
+
+### `file_paths.xml`
+
+Create `res/xml/file_paths.xml` to define the file paths.
+
+```xml
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path name="external_files" path="." />
+</paths>
+```
+
+These steps should help ensure that the `sendMMS` method works correctly, even when the Google Messaging app is selected.
 
 ## Additional Debugging  
 - Ensure that `imageUri` correctly points to the image file and that the file exists.  
