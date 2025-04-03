@@ -50,7 +50,7 @@ If you are ok with the online payment terms of $3 per successful session and wou
 <details>
   <summary><strong>Availability</strong> (Click to expand)</summary>
 
-It usually doesn't take me more than 30 minutes to get back home for screensharing at virtually anytime during my daylight hours and my current time is always accurately reflected here https://time.is/CT
+My day usually starts at 7:30 a.m. Central Time https://time.is/CT.  It usually doesn't take me more than 30 minutes to get back home for screensharing at virtually anytime during my daylight hours and my current time is always accurately reflected here https://time.is/CT
 
 </details>
 
