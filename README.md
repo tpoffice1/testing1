@@ -76,7 +76,7 @@ My day usually starts at 7:30 a.m. Central Time https://time.is/CT.  It usually 
 </details>
 
 <details>
-  <summary><strong>Resolve the bug in our `sendMMS` Method</strong> (Click to expand)</summary>
+  <summary><strong>Notes from last update including Co-Pilot recommendation</strong> (Click to expand)</summary>
 
 We developed the code to get the current default messaging. We now have the ability to select which SMS application to use, but sending MMS is still not working. The problem that if the google messaging app is selected, then it still returns null
 
