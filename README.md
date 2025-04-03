@@ -76,64 +76,50 @@ It usually doesn't take me more than 30 minutes to get back home for screenshari
 </details>
 
 <details>
-  <summary><strong>Debugging and Fixing the `sendMMS` Method</strong> (Click to expand)</summary>
+  <summary><strong>Resolve the bug in our `sendMMS` Method</strong> (Click to expand)</summary>
 
-**Co-Pilot has suggested the following changes to improve the debugging process:**  
+# Troubleshooting the `sendMMS` Method
 
-1. **Check for permissions**: Ensure the app has the necessary permissions to send SMS/MMS  
-2. **Convert `Bitmap` to `Uri`**: Convert the Bitmap images to Uri objects  
-3. **Create and send the MMS**: Use an Intent to send the MMS with the images attached  
+To troubleshoot the `sendMMS` method, ensure that the method is correctly implemented and that all necessary permissions are granted.  
 
-### Updated `sendMMS` Method:  
+## 1. Ensure Necessary Permissions  
+Add the following permissions to your `AndroidManifest.xml`:  
+
+```xml
+<uses-permission android:name="android.permission.SEND_SMS" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+```
+
+## 2. Implement the `sendMMS` Method  
+Below is an example implementation of the `sendMMS` method:  
 
 ```java
-private void sendMMS(ArrayList<Bitmap> images) {
-    if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-        requestPermissionLauncher.launch(Manifest.permission.SEND_SMS);
-        return;
-    }
-
-    ArrayList<Uri> imageUris = new ArrayList<>();
-    for (Bitmap bitmap : images) {
-        Uri imageUri = getImageUri(this, bitmap);
-        if (imageUri != null) {
-            imageUris.add(imageUri);
-        }
-    }
-
-    Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-    sendIntent.setType("image/*");
-    sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
-    sendIntent.putExtra("address", "+1234567890");
-    sendIntent.putExtra("sms_body", "Here are the images");
+public void sendMMS(Context context, String phoneNumber, String message, Uri imageUri) {
+    Intent sendIntent = new Intent(Intent.ACTION_SEND);
+    sendIntent.setType("image/jpeg");
+    sendIntent.putExtra("address", phoneNumber);
+    sendIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+    sendIntent.putExtra(Intent.EXTRA_TEXT, message);
 
     try {
-        startActivity(sendIntent);
+        context.startActivity(sendIntent);
     } catch (Exception e) {
-        Log.e("MMS", "sendMMS: " + e.getMessage());
-        Toast.makeText(this, "Failed to send MMS", Toast.LENGTH_SHORT).show();
+        e.printStackTrace();
+        Toast.makeText(context, "Failed to send MMS", Toast.LENGTH_SHORT).show();
     }
 }
-
-private Uri getImageUri(Context context, Bitmap bitmap) {
-    String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Image", null);
-    return path != null ? Uri.parse(path) : null;
-}
 ```
-### Explanation  
 
-1. **Permission Check**  
-   - The method first checks if `Manifest.permission.SEND_SMS` is granted.  
-   - If not, it requests the permission using `requestPermissionLauncher`.  
-   
-2. **Convert Bitmaps to `Uri`**  
-   - Uses `getImageUri` to convert each `Bitmap` into a `Uri`.  
-   - These URIs are stored in an `ArrayList` for sending.  
+## 3. Call the `sendMMS` Method  
+Use the following code to call the `sendMMS` method:  
 
-3. **Send MMS via Intent**  
-   - Uses `Intent.ACTION_SEND_MULTIPLE` to send multiple images.  
-   - Attaches the images as `EXTRA_STREAM`.  
-   - Adds recipient's number and message body.  
-   - The intent is then started using `startActivity()`.  
+```java
+Uri imageUri = Uri.parse("file://" + imagePath); // Replace imagePath with the actual path to the image
+sendMMS(this, "1234567890", "Check out this image!", imageUri);
+```
+
+## Additional Debugging  
+- Ensure that `imageUri` correctly points to the image file and that the file exists.  
+- If the issue persists, check the Logcat for any error messages that might provide more insight into the problem.
 
 </details>
